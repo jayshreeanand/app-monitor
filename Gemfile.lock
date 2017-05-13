@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/jayshreeanand/google-player.git
-  revision: 70b4b5d2d865caa80d89dd4794dfde453aeaba77
+  revision: 7ed01f722330e964a966ed027099833af50827ff
   specs:
     google-player (0.0.3)
       hashie
