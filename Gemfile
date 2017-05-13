@@ -25,7 +25,7 @@ gem 'devise'
 
 # Misc
 gem 'google-api-client'
-gem 'google-player'
+gem 'google-player', github: 'jayshreeanand/google-player'
 
 group :development, :test do
   gem 'byebug', platform: :mri
