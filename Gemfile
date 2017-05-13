@@ -31,6 +31,9 @@ gem 'google-player', github: 'jayshreeanand/google-player'
 gem 'sentimental'
 gem 'wit'
 
+# External APIs
+gem 'twitter'
+
 group :development, :test do
   gem 'byebug', platform: :mri
 end
