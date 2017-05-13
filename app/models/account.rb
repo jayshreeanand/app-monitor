@@ -24,7 +24,12 @@ class Account < ApplicationRecord
         end
       end
       reviews
-    else
+    elsif twitter?
+      twitter_client = TwitterUtils.new
+      remote_reviews = twitter_client.fetch_mentions(self)
+      remote_reviews.each do |remote_review|
+        Review.sync(remote_review)
+      end
     end
   end
 end

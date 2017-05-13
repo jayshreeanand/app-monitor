@@ -8,7 +8,7 @@ class TwitterUtils
       config.consumer_key        = ENV['TWITTER_CONSUMER_KEY']
       config.consumer_secret     = ENV['TWITTER_CONSUMER_SECRET']
       config.access_token        = ENV['TWITTER_ACCESS_TOKEN']
-      config.access_secret       = ENV['TWITTER_ACCESS_SECRET']
+      config.access_token_secret = ENV['TWITTER_ACCESS_SECRET']
     end
   end
 
@@ -17,7 +17,22 @@ class TwitterUtils
       config.consumer_key        = ENV['TWITTER_CONSUMER_KEY']
       config.consumer_secret     = ENV['TWITTER_CONSUMER_SECRET']
       config.access_token        = ENV['TWITTER_ACCESS_TOKEN']
-      config.access_secret       = ENV['TWITTER_ACCESS_SECRET']
+      config.access_token_secret = ENV['TWITTER_ACCESS_SECRET']
     end
   end
+
+  def fetch_mentions(account)
+    results = []
+    rest_client.search("to:#{account.uid}", result_type: 'recent').collect do |tweet|
+      results << { account_id: account.id,
+        uid: tweet.id.to_s,
+        author: tweet.user.screen_name,
+        title: '',
+        description: tweet.text,
+        created_at: tweet.created_at
+      }
+    end
+    results
+  end
 end
+
