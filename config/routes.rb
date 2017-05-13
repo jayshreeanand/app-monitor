@@ -3,4 +3,8 @@ Rails.application.routes.draw do
   root 'pages#home'
   get 'dashboard' => 'dashboards#index'
 
+  get 'dashboard/projects' => 'dashboards#projects'
+
+
+
 end
