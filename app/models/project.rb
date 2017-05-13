@@ -12,6 +12,15 @@ class Project < ApplicationRecord
     self.slug = slug.strip.downcase.parameterize if slug.present?
   end
 
+  def primary_account
+    return unless accounts.present?
+    if accounts.android.present?
+      accounts.android.first
+    else
+      accounts.first
+    end
+  end
+
   def sync_issues
     return unless trello_board_uid.present?
     trello_client = TrelloUtils.new

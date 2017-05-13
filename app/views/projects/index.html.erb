@@ -2,21 +2,17 @@
 
 <h1>Projects</h1>
 
-<table>
-
-  <tbody>
-    <% @projects.each do |project| %>
-      <tr>
-        <td><%= project.name %></td>
-        <td><%= project.slug %></td>
-        <td><%= project.trello_board_uid %></td>
-        <td><%= link_to 'Show', project %></td>
-        <td><%= link_to 'Edit', edit_project_path(project) %></td>
-        <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <% @projects.each_with_index do |project, i| %>
+      <%= link_to image_tag(project.primary_account.display_picture_url, class: 'img-rounded project-thumb'), project %>
+   <!--  <tr>
+      <td><%= project.name %></td>
+      <td><%= project.slug %></td>
+      <td><%= project.trello_board_uid %></td> -->
+     <!--  <td><%= link_to 'Show', project %></td>
+      <td><%= link_to 'Edit', edit_project_path(project) %></td>
+      <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
+    </tr>
+  <% end %>
 
 <br>
 
