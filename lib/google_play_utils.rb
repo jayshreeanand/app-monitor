@@ -13,7 +13,7 @@ module GooglePlayUtils
           uid: review.id,
           user: review.user,
           title: review.title,
-          description: review.text,
+          description: review.text.sub('  Full Review',''),
           rating: review.rating,
           created_at: review.date }
       end
