@@ -26,7 +26,10 @@ gem 'devise'
 # Misc
 gem 'google-api-client'
 gem 'google-player', github: 'jayshreeanand/google-player'
+
+# NLU
 gem 'sentimental'
+gem 'wit'
 
 group :development, :test do
   gem 'byebug', platform: :mri
