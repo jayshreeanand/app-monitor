@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'dashboard/projects' => 'dashboards#projects'
   resources :projects
   resources :accounts
+  resources :reviews
 
 
 end
