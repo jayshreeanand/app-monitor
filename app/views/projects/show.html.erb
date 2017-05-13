@@ -15,15 +15,21 @@
   <%= @project.trello_board_uid %>
 </p>
 
-<p>
-  <strong>Created at:</strong>
-  <%= @project.created_at %>
-</p>
+<h4>Accounts</h4>
+  <% @project.accounts.each do |account| %>
+    <div class="row">
+      <% if account.android? %>
+        <i class="fa fa-android fa-4x" style="color:#A4C639" aria-hidden="true"></i>
+      <% elsif account.twitter? %>
+        <i class="fa fa-twitter fa-4x" style="color:#0084b4" aria-hidden="true"></i>
+      <% end %>
 
-<p>
-  <strong>Updated at:</strong>
-  <%= @project.updated_at %>
-</p>
+      <%= account.name %>
+      <%= account.uid %>
+      <%= account.keywords %>
+      <%= account.kind %>
+    </div>
+<% end %>
 
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %>
