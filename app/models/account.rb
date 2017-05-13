@@ -1,5 +1,8 @@
+require 'custom_error'
+
 class Account < ApplicationRecord
-  REVIEW_SYNC_PAGES_COUNT = 1
+  REVIEW_SYNC_PAGES_COUNT = 2
+
   validates :uid, presence: true
   validates :kind, presence: true
 
@@ -11,7 +14,11 @@ class Account < ApplicationRecord
   def sync_reviews
     if android?
       (0..(REVIEW_SYNC_PAGES_COUNT-1)).each do |page|
-        remote_reviews = GooglePlayUtils.fetch_reviews(self, page)
+        begin
+          remote_reviews = GooglePlayUtils.fetch_reviews(self, page)
+        rescue Errors::CustomError => e
+          return reviews # stop syncing reviews
+        end
         remote_reviews.each do |remote_review|
           Review.sync(remote_review)
         end
