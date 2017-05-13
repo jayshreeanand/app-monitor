@@ -60,6 +60,10 @@ GEM
     buftok (0.1)
     builder (3.2.3)
     byebug (9.0.6)
+    coffee-script (2.4.1)
+      coffee-script-source
+      execjs
+    coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
     devise (4.2.1)
       bcrypt (~> 3.0)
@@ -220,6 +224,7 @@ PLATFORMS
 DEPENDENCIES
   bootstrap-sass
   byebug
+  coffee-script
   devise
   foreman
   google-player!
