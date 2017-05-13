@@ -23,6 +23,9 @@ gem 'jbuilder', '~> 2.5'
 # Auth
 gem 'devise'
 
+# Misc
+gem 'google-api-client'
+
 group :development, :test do
   gem 'byebug', platform: :mri
 end
