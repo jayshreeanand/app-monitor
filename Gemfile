@@ -5,7 +5,6 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-
 # Stack
 gem 'rails', '~> 5.0.2'
 gem 'pg'
@@ -19,6 +18,9 @@ gem 'coffee-rails', '~> 4.2'
 gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
+
+# Auth
+gem 'devise'
 
 group :development, :test do
   gem 'byebug', platform: :mri
