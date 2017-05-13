@@ -26,10 +26,12 @@ ActiveRecord::Schema.define(version: 20170513071202) do
   end
 
   create_table "projects", force: :cascade do |t|
+    t.integer  "user_id"
     t.string   "name"
     t.string   "slug"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_projects_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
