@@ -4,6 +4,7 @@ class Project < ApplicationRecord
 
   belongs_to :user
   has_many :accounts, dependent: :destroy
+  has_many :issues, dependent: :destroy
 
   before_save :set_slug
 
