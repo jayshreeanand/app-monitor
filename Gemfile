@@ -24,7 +24,6 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise'
 
 # Misc
-gem 'google-api-client'
 gem 'google-player', github: 'jayshreeanand/google-player'
 
 # NLU
@@ -32,7 +31,7 @@ gem 'sentimental'
 gem 'wit'
 
 # External APIs
-gem 'twitter'
+gem 'twitter', '5.0.0.rc.1'
 
 group :development, :test do
   gem 'byebug', platform: :mri
