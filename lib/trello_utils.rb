@@ -12,6 +12,10 @@ class TrelloUtils
   def fetch_cards(account)
   end
 
+  def fetch_board(project)
+    board = Trello::Board.find(project.trello_board_uid)
+  end
+
   def fetch_user
     bob = Trello::Member.find("bobtester")
   end
