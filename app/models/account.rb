@@ -11,6 +11,21 @@ class Account < ApplicationRecord
 
   enum kind: { android: 0, ios: 1, twitter: 2, facebook: 3, other: 4 }
 
+  before_save :set_account_info
+
+
+  def set_account_info
+    info = if android?
+      GooglePlayUtils.app_info(self)
+    elsif twitter?
+      twitter_client = TwitterUtils.new
+      twitter_client.app_info(self)
+    end
+
+    self.name = info[:name]
+    self.display_picture_url = info[:display_picture_url]
+  end
+
   def sync_reviews
     if android?
       (0..(REVIEW_SYNC_PAGES_COUNT-1)).each do |page|

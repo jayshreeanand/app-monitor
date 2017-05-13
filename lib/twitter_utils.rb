@@ -34,5 +34,9 @@ class TwitterUtils
     end
     results
   end
+
+  def app_info(account)
+    { name: rest_client.user.name, display_picture_url: rest_client.user.profile_image_uri_https.to_s }
+  end
 end
 
