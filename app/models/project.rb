@@ -7,7 +7,7 @@ class Project < ApplicationRecord
 
   before_save :set_slug
 
-  def slug
+  def set_slug
     self.slug = slug.strip.downcase.parameterize if slug.present?
   end
 end
