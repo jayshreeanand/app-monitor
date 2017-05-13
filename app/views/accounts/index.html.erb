@@ -1,20 +1,25 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Accounts</h1>
+<h4>Accounts</h4>
+</br>
   <% @accounts.each do |account| %>
-
+    <%= link_to account do %>
       <div class="row">
-        <% if account.android? %>
-          <i class="fa fa-android fa-4x" style="color:#A4C639" aria-hidden="true"></i>
-        <% elsif account.twitter? %>
-          <i class="fa fa-twitter fa-4x" style="color:#0084b4" aria-hidden="true"></i>
-        <% end %>
-
-        <%= account.name %>
-        <%= account.uid %>
-        <%= account.keywords %>
-        <%= account.kind %>
+        <div class="well col-md-4">
+          <div class="col-md-4">
+            <% if account.android? %>
+              <i class="fa fa-android fa-4x" style="color:#A4C639" aria-hidden="true"></i>
+            <% elsif account.twitter? %>
+              <i class="fa fa-twitter fa-4x" style="color:#0084b4" aria-hidden="true"></i>
+            <% end %>
+          </div>
+          <div class="col-md-8">
+            <p class="row"><%= account.name %></p>
+            <p class="row"><%= account.uid %></p>
+          </div>
+        </div>
       </div>
+    <% end %>
   <% end %>
 
 <br>

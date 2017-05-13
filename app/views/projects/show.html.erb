@@ -11,25 +11,35 @@
 </p>
 
 <p>
-  <strong>Trello board uid:</strong>
+  <strong>Trello board</strong>
   <%= @project.trello_board_uid %>
 </p>
-
-<h4>Accounts</h4>
-  <% @project.accounts.each do |account| %>
-    <div class="row">
-      <% if account.android? %>
-        <i class="fa fa-android fa-4x" style="color:#A4C639" aria-hidden="true"></i>
-      <% elsif account.twitter? %>
-        <i class="fa fa-twitter fa-4x" style="color:#0084b4" aria-hidden="true"></i>
+</br>
+<h4>Linked accounts</h4>
+  <% @project.accounts.each_with_index do |account, i| %>
+    <%= link_to account do %>
+      <% if(i % 2 == 1) %>
+        <div class="row">
       <% end %>
+          <div class="well col-md-4 account-show-panel">
+            <div class="col-md-4">
+              <% if account.android? %>
+                <i class="fa fa-android fa-4x" style="color:#A4C639" aria-hidden="true"></i>
+              <% elsif account.twitter? %>
+                <i class="fa fa-twitter fa-4x" style="color:#0084b4" aria-hidden="true"></i>
+              <% end %>
+            </div>
+            <div class="col-md-8">
+              <p class="row"><%= account.name %></p>
+              <p class="row"><%= account.uid %></p>
+            </div>
+          </div>
 
-      <%= account.name %>
-      <%= account.uid %>
-      <%= account.keywords %>
-      <%= account.kind %>
-    </div>
+        <% if(i % 2 == 1) %>
+          </div>
+        <% end %>
+    <% end %>
 <% end %>
-
+</br>
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %>
