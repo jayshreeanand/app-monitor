@@ -1,33 +1,61 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Reviews</h1>
+<div class="row" style="text-align: left">
+  <% if @reviews.first.account.android? %>
+    <i class="fa fa-android fa-4x" style="color:#A4C639" aria-hidden="true"></i>
+  <% elsif @reviews.first.account.twitter? %>
+    <i class="fa fa-twitter fa-4x" style="color:#0084b4" aria-hidden="true"></i>
+  <% end %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Rating</th>
-      <th>Author</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <p>
+    <strong>Name:</strong>
+    <%= @reviews.first.account.name %>
+  </p>
 
-  <tbody>
-    <% @reviews.each do |review| %>
+  <p>
+    <strong>Uid:</strong>
+    <%= @reviews.first.account.uid %>
+  </p>
+
+  <p>
+    <strong>Keywords:</strong>
+    <%= @reviews.first.account.keywords %>
+  </p>
+
+</div>
+</br>
+<!-- <div class="row"> -->
+
+  <table class="table table-bordered">
+    <thead>
       <tr>
-        <td><%= review.title %></td>
-        <td><%= review.description %></td>
-        <td><%= review.rating %></td>
-        <td><%= review.author %></td>
-        <td><%= link_to 'Show', review %></td>
-        <td><%= link_to 'Edit', edit_review_path(review) %></td>
-        <td><%= link_to 'Destroy', review, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <!-- <th>Title</th> -->
+        <th class="col-md-8">Review</th>
+        <th class="col-md-2">Rating</th>
+        <th class="col-md-2">Author</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
+    <tbody>
+      <% @reviews.each do |review| %>
+        <tr>
+          <%= link_to review do %>
+            <!-- <td><%= review.title %></td> -->
+            <td><%= review.description %></td>
+            <td>
+              <div class="row">
+                <% (1..review.rating.to_i).each do |r| %>
+                  <i class="fa fa-star" style="color:#ffd11c"></i>
+                <% end %>
+              </div>
+            </td>
+            <td><%= review.author %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<%= link_to 'New Review', new_review_path %>
+  <br>
+
+<!-- </div> -->

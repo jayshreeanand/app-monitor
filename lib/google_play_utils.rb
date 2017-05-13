@@ -11,7 +11,7 @@ module GooglePlayUtils
       reviews.each do |review|
         results << { account_id: account.id,
           uid: review.id,
-          user: review.user,
+          author: review.user,
           title: review.title,
           description: review.text.sub('  Full Review',''),
           rating: review.rating,
