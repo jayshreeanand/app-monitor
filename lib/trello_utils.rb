@@ -9,11 +9,17 @@ class TrelloUtils
     end
   end
 
-  def fetch_cards(account)
+  def fetch_cards(project)
+    result = []
+    board = fetch_board(project)
+    board.cards.each do |card|
+      result << { project_id: project.id, title: card.name, description: card.desc, uid: card.id, issue_url: card.url }
+    end
+    result
   end
 
   def fetch_board(project)
-    board = Trello::Board.find(project.trello_board_uid)
+    Trello::Board.find(project.trello_board_uid)
   end
 
   def fetch_user

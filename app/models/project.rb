@@ -11,4 +11,14 @@ class Project < ApplicationRecord
   def set_slug
     self.slug = slug.strip.downcase.parameterize if slug.present?
   end
+
+  def sync_issues
+    return unless trello_board_uid.present?
+    trello_client = TrelloUtils.new
+    remote_issues = trello_client.fetch_cards(self)
+    remote_issues.each do |remote_issue|
+      Issue.sync(remote_issue)
+    end
+    issues
+  end
 end
