@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'dashboard' => 'dashboards#index'
 
   get 'dashboard/projects' => 'dashboards#projects'
-
+  resources :projects
 
 
 end
