@@ -32,6 +32,7 @@ gem 'wit'
 
 # External APIs
 gem 'twitter', '5.0.0.rc.1'
+gem 'ruby-trello'
 
 group :development, :test do
   gem 'byebug', platform: :mri
