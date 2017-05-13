@@ -29,6 +29,7 @@ gem 'google-player', github: 'jayshreeanand/google-player'
 # NLU
 gem 'sentimental'
 gem 'wit'
+gem 'easy_translate' # google translate
 
 # External APIs
 gem 'twitter', '5.0.0.rc.1'
