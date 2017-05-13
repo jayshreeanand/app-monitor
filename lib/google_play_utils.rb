@@ -3,9 +3,19 @@ require 'google-play'
 module GooglePlayUtils
   attr_accessor :client
 
-  def self.fetch_reviews(app_name, page)
+  def self.fetch_reviews(account, page)
     client = ::GooglePlay.new
-    reviews = client.reviews(app_name, page: page)
-    byebug
+    reviews = client.reviews(account.uid, page: page)
+    results = []
+    reviews.each do |review|
+      results << { account_id: account.id,
+        uid: review.id,
+        user: review.user,
+        title: review.title,
+        description: review.text,
+        rating: review.rating,
+        created_at: review.date }
+    end
+    results
   end
 end
