@@ -113,6 +113,9 @@ body {
   background-color: #eee;
   width: 100px;
   height: auto; 
+  margin-right: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .account-show-panel {
@@ -124,4 +127,12 @@ body {
   margin-left: 15px;
   background-color: #eee;
   padding-top: 5px; 
+}
+
+.header-navbar {
+  background-color: #42b3f4;
+}
+
+.header-navbar a {
+  color: #eee;
 }
