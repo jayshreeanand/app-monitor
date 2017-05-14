@@ -42,7 +42,7 @@ class TwitterUtils
 
   def app_info(account)
     twitter_user = rest_client.user(account.uid)
-    { name: twitter_user.user.name, display_picture_url: twitter_user.user.profile_image_uri_https.to_s }
+    { name: twitter_user.name, display_picture_url: twitter_user.profile_image_uri_https.to_s }
   end
 end
 
