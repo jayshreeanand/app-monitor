@@ -35,7 +35,7 @@
       <tr>
         <!-- <th>Title</th> -->
         <th class="col-md-8">Review</th>
-        <th class="col-md-2">Rating</th>
+        <th class="col-md-2">Rating/Sentiment</th>
         <th class="col-md-2">Author</th>
       </tr>
     </thead>
@@ -47,11 +47,15 @@
             <!-- <td><%= review.title %></td> -->
             <td><%= review.description %></td>
             <td>
-              <div class="row" style="text-align: center">
-                <% (1..review.rating.to_i).each do |r| %>
-                  <i class="fa fa-star" style="color:#ffd11c"></i>
-                <% end %>
-              </div>
+             <% if @account.android? %>
+                <div class="row" style="text-align: center">
+                  <% (1..review.rating.to_i).each do |r| %>
+                    <i class="fa fa-star" style="color:#ffd11c"></i>
+                  <% end %>
+                </div>
+              <% else %>
+                <%= review.sentiment.to_f.round(2) %>
+              <% end %>
             </td>
             <td><%= review.author %></td>
           <% end %>
