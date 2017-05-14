@@ -35,6 +35,9 @@ gem 'easy_translate' # google translate
 gem 'twitter', '5.0.0.rc.1'
 gem 'ruby-trello'
 
+# Charts
+gem 'chartkick'
+
 group :development, :test do
   gem 'byebug', platform: :mri
 end

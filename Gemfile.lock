@@ -60,6 +60,7 @@ GEM
     buftok (0.1)
     builder (3.2.3)
     byebug (9.0.6)
+    chartkick (2.2.3)
     coffee-script (2.4.1)
       coffee-script-source
       execjs
@@ -229,6 +230,7 @@ PLATFORMS
 DEPENDENCIES
   bootstrap-sass
   byebug
+  chartkick
   coffee-script
   devise
   easy_translate
