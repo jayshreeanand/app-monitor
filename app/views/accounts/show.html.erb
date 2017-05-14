@@ -19,7 +19,7 @@
   <strong>Keywords:</strong>
   <%= @account.keywords %>
 </p>
-
+<%= link_to 'Sync Reviews', sync_reviews_account_path(@account) %> |
 <%= link_to 'Edit', edit_account_path(@account) %> |
 <%= link_to 'Back', accounts_path %>
 </br>

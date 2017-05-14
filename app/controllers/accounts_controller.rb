@@ -1,6 +1,6 @@
 class AccountsController < ApplicationController
   layout 'dashboard/main'
-  before_action :set_account, only: [:show, :edit, :update, :destroy]
+  before_action :set_account, only: [:show, :edit, :update, :destroy, :sync_reviews]
 
   # GET /accounts
   def index
@@ -31,6 +31,13 @@ class AccountsController < ApplicationController
     end
   end
 
+  #PATCH/PUT /accounts/1/sync_reviews
+  def sync_reviews
+  @account.sync_reviews
+      redirect_to @account, notice: 'Account was successfully synced.'
+
+  end
+
   # PATCH/PUT /accounts/1
   def update
     if @account.update(account_params)
@@ -54,6 +61,6 @@ class AccountsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def account_params
-      params.require(:account).permit(:name, :slug, :uid, :keywords, :kind)
+      params.require(:account).permit(:name, :slug, :uid, :keywords, :kind, :project_id)
     end
 end

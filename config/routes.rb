@@ -8,4 +8,11 @@ Rails.application.routes.draw do
   resources :accounts
   resources :reviews
   resources :issues
+
+
+  resources :accounts do
+    member do
+      get :sync_reviews
+    end
+  end
 end

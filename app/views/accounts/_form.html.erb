@@ -1,37 +1,44 @@
-<%= form_for(account) do |f| %>
-  <% if account.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(account.errors.count, "error") %> prohibited this account from being saved:</h2>
+<div class="col-sm-6">
+  <%= form_for(account) do |f| %>
+    <% if account.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(account.errors.count, "error") %> prohibited this account from being saved:</h2>
 
-      <ul>
-      <% account.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+        <ul>
+        <% account.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control' %>
+    </div>
+
+    <div class="field">
+      <%= f.label :project %>
+      <%= f.collection_select :project_id, Project.order(:name),:id,:name, include_blank: true %>
+    </div>
+
+    <div class="field">
+      <%= f.label :uid %>
+      <%= f.text_field :uid, class: 'form-control'  %>
+    </div>
+
+    <div class="field">
+      <%= f.label :keywords %>
+      <%= f.text_field :keywords, class: 'form-control'  %>
+    </div>
+
+    <div class="field">
+      <%= f.label :kind %>
+      <%= f.select :kind, Account.kinds.keys.to_a %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit %>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= f.label :uid %>
-    <%= f.text_field :uid %>
-  </div>
-
-  <div class="field">
-    <%= f.label :keywords %>
-    <%= f.text_field :keywords %>
-  </div>
-
-  <div class="field">
-    <%= f.label :kind %>
-    <%= f.text_field :kind %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>

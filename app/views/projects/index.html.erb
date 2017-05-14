@@ -3,7 +3,13 @@
 <h1>Projects</h1>
 
   <% @projects.each_with_index do |project, i| %>
-      <%= link_to image_tag(project.primary_account.display_picture_url, class: 'img-rounded project-thumb'), project %>
+      <% if(project.accounts.present?) %>
+        <%= link_to image_tag(project.primary_account.display_picture_url, class: 'img-rounded project-thumb'),project %>
+      <% else %>
+        <%= link_to project do %>
+          <i class="fa fa-folder fa-4x img-rounded project-thumb"></i>
+        <% end %>
+      <% end %>
    <!--  <tr>
       <td><%= project.name %></td>
       <td><%= project.slug %></td>

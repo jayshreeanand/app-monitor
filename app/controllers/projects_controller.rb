@@ -55,6 +55,6 @@ class ProjectsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def project_params
-      params.require(:project).permit(:name, :slug, :user, :trello_board_uid, :created_at, :updated_at)
+      params.require(:project).permit(:name, :slug, :user, :trello_board_uid, :created_at, :updated_at).merge(user_id: current_user.id)
     end
 end

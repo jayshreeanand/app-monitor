@@ -6,10 +6,10 @@ class Project < ApplicationRecord
   has_many :accounts, dependent: :destroy
   has_many :issues, dependent: :destroy
 
-  before_save :set_slug
+  before_validation :set_slug
 
   def set_slug
-    self.slug = slug.strip.downcase.parameterize if slug.present?
+    self.slug = name.strip.downcase.parameterize if name.present?
   end
 
   def primary_account
