@@ -15,4 +15,10 @@ Rails.application.routes.draw do
       get :sync_reviews
     end
   end
+
+   resources :projects do
+    member do
+      get :sync_issues
+    end
+  end
 end

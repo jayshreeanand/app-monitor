@@ -1,7 +1,6 @@
 class ProjectsController < ApplicationController
   layout 'dashboard/main'
-  before_action :authenticate_user!
-  before_action :set_project, only: [:show, :edit, :update, :destroy]
+  before_action :set_project, only: [:show, :edit, :update, :destroy, :sync_issues]
 
   # GET /projects
   def index
@@ -30,6 +29,12 @@ class ProjectsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def sync_issues
+    @project.sync_issues
+      redirect_to @project, notice: 'Project was successfully synced.'
+
   end
 
   # PATCH/PUT /projects/1

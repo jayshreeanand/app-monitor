@@ -41,6 +41,10 @@
     <% end %>
 <% end %>
 </br>
+<%= link_to 'Sync Issues', sync_issues_project_path(@project) %> |
+<%= link_to 'Edit', edit_project_path(@project) %> |
+<%= link_to 'Back', projects_path %>
+</br>
 
 <% if @project.trello_board_uid.present? %>
   <h4>Linked Issue tracker</h4>
@@ -60,5 +64,4 @@
     </div>
   <% end %>
 </br>
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+
