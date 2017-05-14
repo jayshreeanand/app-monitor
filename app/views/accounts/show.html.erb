@@ -22,3 +22,36 @@
 
 <%= link_to 'Edit', edit_account_path(@account) %> |
 <%= link_to 'Back', accounts_path %>
+</br>
+</br>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <!-- <th>Title</th> -->
+        <th class="col-md-8">Review</th>
+        <th class="col-md-2">Rating</th>
+        <th class="col-md-2">Author</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @account.reviews.each do |review| %>
+        <tr>
+          <%= link_to review do %>
+            <!-- <td><%= review.title %></td> -->
+            <td><%= review.description %></td>
+            <td>
+              <div class="row" style="text-align: center">
+                <% (1..review.rating.to_i).each do |r| %>
+                  <i class="fa fa-star" style="color:#ffd11c"></i>
+                <% end %>
+              </div>
+            </td>
+            <td><%= review.author %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>

@@ -1,4 +1,6 @@
 class ReviewsController < ApplicationController
+  layout 'dashboard/main'
+  
   before_action :set_review, only: [:show, :edit, :update, :destroy]
 
   # GET /reviews

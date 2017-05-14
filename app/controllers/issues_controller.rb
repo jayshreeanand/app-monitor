@@ -1,6 +1,6 @@
 class IssuesController < ApplicationController
   before_action :set_issue, only: [:show, :edit, :update, :destroy]
-
+  layout 'dashboard/main'
   # GET /issues
   def index
     @issues = Issue.all

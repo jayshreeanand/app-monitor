@@ -12,7 +12,7 @@
 
 <p>
   <strong>Issue url:</strong>
-  <%= @issue.issue_url %>
+  <%= link_to('link', @issue.issue_url) %>
 </p>
 
 <%= link_to 'Edit', edit_issue_path(@issue) %> |
