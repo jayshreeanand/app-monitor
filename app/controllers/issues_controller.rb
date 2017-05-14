@@ -3,7 +3,7 @@ class IssuesController < ApplicationController
   layout 'dashboard/main'
   # GET /issues
   def index
-    @issues = Issue.all
+    @issues = currrent_user.issues
   end
 
   # GET /issues/1
