@@ -14,7 +14,14 @@ class AccountsController < ApplicationController
     # @account.reviews.each do |r|
     #   @chart_data[r.created_at] = r.rating
     # end
-    @chart_data = @account.reviews.group(:created_at).average(:rating)
+    if @account.android?
+      @chart_data = @account.reviews.group(:created_at).average(:rating)
+    else
+      @chart_data = {}
+      @account.reviews.each do |r|
+        @chart_data[r.created_at] = r.sentiment.to_f
+      end
+    end
   end
 
   # GET /accounts/new

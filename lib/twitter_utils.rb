@@ -23,13 +23,18 @@ class TwitterUtils
 
   def fetch_mentions(account)
     results = []
-    rest_client.search("to:#{account.uid}", result_type: 'recent').collect do |tweet|
+    sentiment_analyzer = SentimentUtils.new
+
+    tweets = rest_client.search("to:#{account.uid}", result_type: 'recent')
+    tweets.collect do |tweet|
+      sentiment = sentiment_analyzer.find_sentiment_score(tweet.text)
       results << { account_id: account.id,
         uid: tweet.id.to_s,
         author: tweet.user.screen_name,
         title: '',
         description: tweet.text,
-        created_at: tweet.created_at
+        created_at: tweet.created_at,
+        sentiment: sentiment
       }
     end
     results

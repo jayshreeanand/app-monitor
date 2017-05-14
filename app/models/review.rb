@@ -25,6 +25,8 @@ class Review < ApplicationRecord
       author: params[:author]
     )
     review.rating = params[:rating] if params[:rating].present?
+    review.sentiment = params[:sentiment] if params[:sentiment].present?
+
     
     review.save! if review.new_record? || review.changed?
     review

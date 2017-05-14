@@ -8,8 +8,8 @@ class SentimentUtils
     @analyzer.load_defaults
     @analyzer.threshold = 0.1
   end
-  
-  def find_sentiment(text)
 
+  def find_sentiment_score(text)
+    analyzer.score text
   end
 end
