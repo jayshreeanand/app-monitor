@@ -37,6 +37,7 @@ gem 'ruby-trello'
 
 # Charts
 gem 'chartkick'
+gem 'groupdate'
 
 group :development, :test do
   gem 'byebug', platform: :mri

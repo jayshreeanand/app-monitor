@@ -9,6 +9,12 @@ class AccountsController < ApplicationController
 
   # GET /accounts/1
   def show
+    # @chart_data = {}
+
+    # @account.reviews.each do |r|
+    #   @chart_data[r.created_at] = r.rating
+    # end
+    @chart_data = @account.reviews.group(:created_at).average(:rating)
   end
 
   # GET /accounts/new

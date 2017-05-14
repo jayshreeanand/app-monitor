@@ -87,6 +87,8 @@ GEM
       thor (~> 0.19.1)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
+    groupdate (3.2.0)
+      activesupport (>= 3)
     hashie (3.5.5)
     http (0.5.1)
       http_parser.rb
@@ -236,6 +238,7 @@ DEPENDENCIES
   easy_translate
   foreman
   google-player!
+  groupdate
   jquery-rails
   listen (~> 3.0.5)
   pg

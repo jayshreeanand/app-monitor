@@ -26,9 +26,9 @@ class Account < ApplicationRecord
     self.display_picture_url = info[:display_picture_url]
   end
 
-  def sync_reviews
+  def sync_reviews(total_pages=REVIEW_SYNC_PAGES_COUNT)
     if android?
-      (0..(REVIEW_SYNC_PAGES_COUNT-1)).each do |page|
+      (0..(total_pages-1)).each do |page|
         begin
           remote_reviews = GooglePlayUtils.fetch_reviews(self, page)
         rescue Errors::CustomError => e
